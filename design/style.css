@@ -1,67 +1,69 @@
+/* Mediator Plugin for Vanilla Forums by Seon-Wook Park | CC BY-NC-SA */
+
 center.Youtube {
-    width: 640px;
-    height: 80px;
-    overflow: hidden;
-    -webkit-transition: height .5s;
-    -moz-transition: height .5s;
-    -ms-transition: height .5s;
-    -o-transition: height .5s;
-    transition: height .5s;
-    background-color: black;
+	width: 640px;
+	height: 80px;
+	overflow: hidden;
+	-webkit-transition: height .5s;
+	-moz-transition: height .5s;
+	-ms-transition: height .5s;
+	-o-transition: height .5s;
+	transition: height .5s;
+	background-color: black;
 }
 
 center.Youtube div.lazyload {
-    background-position: 0 -60px;
-    background-size: 640px 480px;
-    background-repeat: no-repeat;
-    position: relative;
-    width: 640px;
-    height: 360px;
-    box-shadow: #888 0px 0px 2px;
-    -moz-box-shadow: #888 0px 0px 2px;
-    -webkit-box-shadow: #888 0px 0px 2px;
+	background-position: 0 -60px;
+	background-size: 640px 480px;
+	background-repeat: no-repeat;
+	position: relative;
+	width: 640px;
+	height: 360px;
+	box-shadow: #888 0px 0px 2px;
+	-moz-box-shadow: #888 0px 0px 2px;
+	-webkit-box-shadow: #888 0px 0px 2px;
+	color: white;
+	font: 16px arial;
+	cursor: pointer;
 }
 
 center.Youtube div.lazyload div.yt-title {
-    width: 100%;
-    text-align: left;
-    padding: 5px 11px;
-    background: rgba(0, 0, 0, .8);
-    color: white;
-    font: 16px arial;
-	user-select: none;
-	-ms-user-select: none;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	cursor: default;
+	width: 100%;
+	text-align: left;
+	padding: 5px 11px;
+	background: rgba(0, 0, 0, .8);
+}
+center.Youtube div.lazyload div.yt-title a {
+	color: white;
+	font: 16px arial;
 }
 center.Youtube div.lazyload div.yt-button {
-    background: url(https://ssl.gstatic.com/s2/tt/images/play-overlay.png) no-repeat center center;
-    position: relative;
-    width: 77px;
-    height: 77px;
-    top: 125px;
-    opacity: .6;
-    -webkit-transition: opacity .5s;
-    -moz-transition: opacity .5s;
-    -ms-transition: opacity .5s;
-    -o-transition: opacity .5s;
-    transition: opacity .5s;
+	background: url(https://ssl.gstatic.com/s2/tt/images/play-overlay.png) no-repeat center center;
+	position: relative;
+	width: 77px;
+	height: 77px;
+	top: 125px;
+	opacity: .6;
+	-webkit-transition: opacity .5s;
+	-moz-transition: opacity .5s;
+	-ms-transition: opacity .5s;
+	-o-transition: opacity .5s;
+	transition: opacity .5s;
 }
 center.Youtube div.lazyload div.yt-button:hover {
-    opacity: .9;
+	opacity: .9;
 }
 
 center.Youtube:hover,
 center.YoutubeFocus {
-    height: 360px;
+	height: 360px;
 }
 
 center.Bandcamp iframe {
 	display: block;
 	box-shadow: #888 0px 0px 2px;
 	-moz-box-shadow: #888 0px 0px 2px;
-	-webkit-box-shadow: #888 0px 0px 2px;	
+	-webkit-box-shadow: #888 0px 0px 2px;
 }
 
 center.BCtrack iframe {

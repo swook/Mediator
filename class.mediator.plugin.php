@@ -5,7 +5,7 @@
 $PluginInfo['Mediator'] = array(
 	'Name' => 'Mediator',
 	'Description' => 'Allows automatic embedding of media by converting media links to embed code. Supports Youtube, Vimeo, Imgur, Pastebin, Soundcloud [Bandcamp].',
-	'Version' => '0.1.41',
+	'Version' => '0.1.42',
 	'Date' => '12 Nov 2012',
 	'Author' => 'Seon-Wook Park',
 	'AuthorEmail' => 'seon.wook@swook.net',

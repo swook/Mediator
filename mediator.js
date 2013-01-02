@@ -1,8 +1,7 @@
 /* Mediator Plugin for Vanilla Forums by Seon-Wook Park | CC BY-NC-SA */
 
 (function ($, undefined) {
-	var width = 640,
-		height = 360;
+	var width, height;
 
 	$(document).ready(Mediator);
 
@@ -39,8 +38,17 @@
 	};
 
 	function Mediator () {
+		var mlist = $('ul.MessageList');
+		if (mlist.width() < 640) {
+			width = mlist.width() - 40;
+			height = width * 0.5625;
+		} else {
+			width = 640;
+			height = 360;
+		}
+
 		$('div.Message a').each(Check);
-		$('ul.MessageList').live('DOMNodeInserted', function(e) {
+		mlist.live('DOMNodeInserted', function(e) {
 			if ($(e.target).hasClass('Comment')) {
 				$('div.Message a', e.target).each(Check);
 			}
@@ -105,7 +113,7 @@
 		return;
 	}
 
-	function ReplaceImage (url, elem, $elem) { 
+	function ReplaceImage (url, elem, $elem) {
 		var newel = $('<img>');
 		newel.attr('src', url);
 		CommonSetting(newel, $elem);
@@ -119,7 +127,7 @@
 	function ReplaceImgur (hash, elem, $elem) {
 		ReplaceImage('http://i.imgur.com/'+ hash +'.png', elem, $elem);
 		$.getJSON('http://api.imgur.com/2/image/'+ hash, function (data) {
-			$elem.unwrap();	
+			$elem.unwrap();
 			ReplaceImage(data.image.links.original, elem, $elem);
 		});
 	}
@@ -149,7 +157,12 @@
 			if (YouTubeIframeAPIReady) YoutubeRegisterPlayer(id);
 		})
 		$.getJSON('http://gdata.youtube.com/feeds/api/videos/'+ hash +'?v=2&alt=json-in-script&callback=?', function (data) {
-			$('div.yt-title', lazyloader).html(data.entry.title.$t);
+			var ltitle = $('div.yt-title', lazyloader);
+			ltitle.html(data.entry.title.$t);
+			ltitle.click(function(e) {
+				window.open('http://www.youtube.com/watch?v='+hash, '_blank');
+				e.stopPropagation();
+			});
 		});
 		$elem.replaceWith(lazyloader);
 	}
@@ -194,11 +207,12 @@
 				ReplaceYoutube(ifr.data('YTSetting').videoId, ifr[0], ifr);
 			}, 500);
 
-			if (YTidx < YTList.length - 1) {
-				var newYT = YTList.eq(YTidx + 1);
-				if (newYT.hasClass('YoutubeFocus')) $('iframe', newYT).data('YTPlayer').playVideo();
-				else $('div.lazyload', newYT).click();
-			}
+			// Disable continuous Youtube playback for now
+			// if (YTidx < YTList.length - 1) {
+			// 	var newYT = YTList.eq(YTidx + 1);
+			// 	if (newYT.hasClass('YoutubeFocus')) $('iframe', newYT).data('YTPlayer').playVideo();
+			// 	else $('div.lazyload', newYT).click();
+			// }
 		}
 	}
 	var YouTubeIframeAPIReady;
