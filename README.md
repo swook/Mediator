@@ -1,7 +1,7 @@
 Mediator, a javascript plugin for Vanilla
 -----------------------------------------
 
-Find the plugin page [here](http://vanillaforums.org/addon/mediator-plugin-0.2).
+Find the plugin page [here](http://vanillaforums.org/addon/mediator-plugin).
 
 Mediator is a [plugin](http://vanillaforums.org/addon/browse/plugins) written in Javascript for [Vanilla](http://vanillaforums.org/), an open-source forum software written in PHP.
 
