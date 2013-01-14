@@ -4,6 +4,7 @@ center.Youtube {
 	width: 640px;
 	height: 80px;
 	overflow: hidden;
+	margin: auto;
 	-webkit-transition: height .5s;
 	-moz-transition: height .5s;
 	-ms-transition: height .5s;
