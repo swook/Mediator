@@ -109,7 +109,7 @@
 		newel.css('box-shadow', '0 0 2px #888');
 		newel.css('-moz-box-shadow', '0 0 2px #888');
 		newel.css('-webkit-box-shadow', '0 0 2px #888');
-		$elem.wrap('<center class="'+ type +'"/>');
+		$elem.wrap('<center class="'+ type +'" style="width:'+width+'px;"/>');
 		return;
 	}
 
@@ -136,7 +136,7 @@
 		var newel = $('<iframe allowfullscreen>'),
 			id = 'YT_'+ hash +'_'+ (new Date).getTime();
 		newel.attr('height', height);
-		newel.attr('src', 'http://www.youtube.com/embed/'+ hash +'?rel=0&autoplay=1&theme=light&enablejsapi=1');
+		newel.attr('src', 'http://www.youtube.com/embed/'+ hash +'?rel=0&autoplay=1&theme=light&enablejsapi=1&width='+width+'&height='+height);
 		newel.attr('frameborder', '0');
 		newel.attr('id', id);
 		newel.data('YTSetting', {
@@ -147,12 +147,27 @@
 			}
 		});
 		CommonSetting(newel, $elem, 'Youtube');
+		$elem.height(height);
+		$elem.parent().hover(function(e) {
+			var $this = $(this);
+			$this.css('max-height', height+'px');
+			$this.addClass('YoutubeHover');
+		}, function(e) {
+			var $this = $(this);
+			if (!$this.hasClass('YoutubeFocus')) $this.css('max-height', '80px');
+			$this.removeClass('YoutubeHover');
+		});
 
 		var lazyloader = $('<div class="lazyload"><div class="yt-title"/><div class="yt-button"/></div>');
 		lazyloader.css('background-image', 'url(//images-focus-opensocial.googleusercontent.com/gadgets/proxy?url=http://i.ytimg.com/vi/'+ hash +'/hqdefault.jpg&container=focus&resize_w=642)');
+		lazyloader.css('background-position', '0px '+(-height*0.16)+'px')
+		lazyloader.css('background-size', width*1.003+'px '+width/1.33+'px')
+		lazyloader.width(width);
+		lazyloader.height(height);
+		$('div.yt-button', lazyloader).css('top', (height-106)/2);
 		lazyloader.click(function(e) {
 			var $this = $(this);
-			$this.parent().addClass('YoutubeFocus');
+			$this.parent().addClass('YoutubeFocus').css('max-height', height+'px');
 			$this.replaceWith(newel);
 			if (YouTubeIframeAPIReady) YoutubeRegisterPlayer(id);
 		})
@@ -186,7 +201,7 @@
 				else page = $('html,body');
 				page.stop().animate(
 					{
-						scrollTop: (parseInt(par.offset().top) - (parseInt($(window).height()) / 2 - 180))
+						scrollTop: (parseInt(par.offset().top) - (parseInt($(window).height()) - height)/2)
 					},
 					750
 				);
@@ -201,11 +216,14 @@
 
 			event.target = null;
 			par.removeClass('YoutubeFocus');
+			if (!par.hasClass('YoutubeHover')) {
+				par.css('max-height', '80px');
 
-			setTimeout(function() {
-				ifr.unwrap();
-				ReplaceYoutube(ifr.data('YTSetting').videoId, ifr[0], ifr);
-			}, 500);
+				setTimeout(function() {
+					ifr.unwrap();
+					ReplaceYoutube(ifr.data('YTSetting').videoId, ifr[0], ifr);
+				}, 500);
+			}
 
 			// Disable continuous Youtube playback for now
 			// if (YTidx < YTList.length - 1) {

@@ -1,25 +1,20 @@
 /* Mediator Plugin for Vanilla Forums by Seon-Wook Park | CC BY-NC-SA */
 
 center.Youtube {
-	width: 640px;
-	height: 80px;
+	max-height: 80px;
 	overflow: hidden;
 	margin: auto;
-	-webkit-transition: height .5s;
-	-moz-transition: height .5s;
-	-ms-transition: height .5s;
-	-o-transition: height .5s;
-	transition: height .5s;
+	-webkit-transition: max-height .5s;
+	-moz-transition: max-height .5s;
+	-ms-transition: max-height .5s;
+	-o-transition: max-height .5s;
+	transition: max-height .5s;
 	background-color: black;
 }
 
 center.Youtube div.lazyload {
-	background-position: 0 -60px;
-	background-size: 640px 480px;
 	background-repeat: no-repeat;
 	position: relative;
-	width: 640px;
-	height: 360px;
 	box-shadow: #888 0px 0px 2px;
 	-moz-box-shadow: #888 0px 0px 2px;
 	-webkit-box-shadow: #888 0px 0px 2px;
@@ -53,11 +48,6 @@ center.Youtube div.lazyload div.yt-button {
 }
 center.Youtube div.lazyload div.yt-button:hover {
 	opacity: .9;
-}
-
-center.Youtube:hover,
-center.YoutubeFocus {
-	height: 360px;
 }
 
 center.Bandcamp iframe {
