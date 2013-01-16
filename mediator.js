@@ -38,7 +38,7 @@
 	};
 
 	function Mediator () {
-		var mlist = $('ul.MessageList');
+		var mlist = $('.MessageList .Message');
 		if (mlist.width() < 640) {
 			width = mlist.width() - 40;
 			height = width * 0.5625;
@@ -48,15 +48,17 @@
 		}
 
 		$('div.Message a').each(Check);
-		mlist.live('DOMNodeInserted', function(e) {
+		$('.MessageList').live('DOMNodeInserted', function(e) {
 			if ($(e.target).hasClass('Comment')) {
 				$('div.Message a', e.target).each(Check);
 			}
 		});
-		$.getScript('//www.youtube.com/iframe_api');
-		$('div.Message center.Youtube').each(function(i, el) {
-			if (i == 0) $(this).addClass('YoutubeFocus');
-		});
+
+		var ytlist = $('div.Message center.Youtube');
+		if (ytlist.length > 0) {
+			$.getScript('//www.youtube.com/iframe_api');
+			ytlist.eq(0).addClass('YoutubeFocus').css('max-height', height+'px');
+		}
 	}
 
 	function Check (i, elem) {
