@@ -74,7 +74,7 @@
 			return ReplaceImage(url, elem, $elem);
 
 		if (urlo.host == 'imgur.com' || urlo.host == 'www.imgur.com') {
-			var match = urlo.file.match(/^([\w]{5})$/);
+			var match = urlo.path.match(/^\/([\w]{5})$/);
 			if (match) return ReplaceImgur(match[1], elem, $elem);
 		}
 
