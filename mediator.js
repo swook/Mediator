@@ -3,7 +3,9 @@
 (function ($, undefined) {
 	var width, height;
 
-	$(document).ready(Mediator);
+	$(document).ready(function() {
+		setTimeout(Mediator, 0);
+	});
 
 	var urlcache = {};
 	function parseURL(url) {
