@@ -109,7 +109,7 @@
 	}
 
 	function CommonSetting (newel, $elem, type) {
-		newel.attr('width', width);
+		newel.prop('width', width);
 		newel.css('box-shadow', '0 0 2px #888');
 		newel.css('-moz-box-shadow', '0 0 2px #888');
 		newel.css('-webkit-box-shadow', '0 0 2px #888');
@@ -119,7 +119,7 @@
 
 	function ReplaceImage (url, elem, $elem) {
 		var newel = $('<img>');
-		newel.attr('src', url);
+		newel.prop('src', url);
 		CommonSetting(newel, $elem);
 		$elem.html(newel);
 		newel = $('img', $elem);
@@ -139,10 +139,10 @@
 	function ReplaceYoutube (hash, elem, $elem) {
 		var newel = $('<iframe allowfullscreen>'),
 			id = 'YT_'+ hash +'_'+ (new Date).getTime();
-		newel.attr('height', height);
-		newel.attr('src', 'http://www.youtube.com/embed/'+ hash +'?rel=0&autoplay=1&theme=light&enablejsapi=1&width='+width+'&height='+height);
-		newel.attr('frameborder', '0');
-		newel.attr('id', id);
+		newel.prop('height', height);
+		newel.prop('src', 'http://www.youtube.com/embed/'+ hash +'?rel=0&autoplay=1&theme=light&enablejsapi=1&width='+width+'&height='+height);
+		newel.prop('frameborder', '0');
+		newel.prop('id', id);
 		newel.data('YTSetting', {
 			id: id,
 			videoId: hash,
@@ -247,17 +247,17 @@
 
 	function ReplaceVimeo (hash, elem, $elem) {
 		var newel = $('<iframe allowfullscreen>');
-		newel.attr('height', height);
-		newel.attr('src', 'http://player.vimeo.com/video/'+ hash +'?portrait=0&amp;color=ffffff');
-		newel.attr('frameborder', '0');
+		newel.prop('height', height);
+		newel.prop('src', 'http://player.vimeo.com/video/'+ hash +'?portrait=0&amp;color=ffffff');
+		newel.prop('frameborder', '0');
 		CommonSetting(newel, $elem);
 		$elem.replaceWith(newel);
 	}
 
 	function ReplacePastebin (hash, elem, $elem) {
 		var newel = $('<iframe>');
-		newel.attr('height', height);
-		newel.attr('src', 'http://pastebin.com/embed_iframe.php?i='+ hash);
+		newel.prop('height', height);
+		newel.prop('src', 'http://pastebin.com/embed_iframe.php?i='+ hash);
 		CommonSetting(newel, $elem);
 		$elem.replaceWith(newel);
 	}
