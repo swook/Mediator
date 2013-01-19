@@ -113,6 +113,7 @@
 		newel.css('box-shadow', '0 0 2px #888');
 		newel.css('-moz-box-shadow', '0 0 2px #888');
 		newel.css('-webkit-box-shadow', '0 0 2px #888');
+		$elem.addClass('Mediator');
 		$elem.wrap('<center class="'+ type +'" style="width:'+width+'px;"/>');
 		return;
 	}
