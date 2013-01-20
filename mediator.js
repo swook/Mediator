@@ -165,7 +165,7 @@
 
 		var lazyloader = $('<div class="lazyload"><div class="yt-title"/><div class="yt-button"/></div>');
 		lazyloader.css('background-image', 'url(//images-focus-opensocial.googleusercontent.com/gadgets/proxy?url=http://i.ytimg.com/vi/'+ hash +'/hqdefault.jpg&container=focus&resize_w=642)');
-		lazyloader.css('background-position', '0px '+(-height*0.16)+'px')
+		lazyloader.css('background-position', '0px '+(-height*0.17)+'px')
 		lazyloader.css('background-size', width*1.003+'px '+width/1.33+'px')
 		lazyloader.width(width);
 		lazyloader.height(height);
