@@ -49,14 +49,14 @@
 			height = 360;
 		}
 
-		$('div.Message a').each(Check);
+		$('.Message a').each(Check);
 		$('.MessageList').live('DOMNodeInserted', function(e) {
 			if ($(e.target).hasClass('Comment')) {
 				$('div.Message a', e.target).each(Check);
 			}
 		});
 
-		var ytlist = $('div.Message center.Youtube');
+		var ytlist = $('.Message center.Youtube');
 		if (ytlist.length > 0) {
 			$.getScript('//www.youtube.com/iframe_api');
 			ytlist.eq(0).addClass('YoutubeFocus').css('max-height', height+'px');
