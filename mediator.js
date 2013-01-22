@@ -293,7 +293,6 @@
 					mid = '/album='+ data.album_id +'/size=grande3/';
 				}
 				else return;
-console.log(mid);
 				$elem.wrap('<center class="Bandcamp '+ mclass +'" />').replaceWith('<iframe src="http://bandcamp.com/EmbeddedPlayer/v=2'+ mid +'bgcol=FFFFFF/linkcol=151/" allowtransparency="true" >');
 			}
 		).error(function() {
