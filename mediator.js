@@ -122,8 +122,7 @@
 		var newel = $('<img>');
 		newel.prop('src', url);
 		CommonSetting(newel, $elem);
-		$elem.html(newel);
-		newel = $('img', $elem);
+		$elem.replaceWith(newel);
 		newel[0].onload = function() {
 			this.setAttribute('width')
 			if (this.clientWidth > width) this.setAttribute('width', width);
