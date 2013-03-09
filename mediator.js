@@ -129,8 +129,8 @@
 		};
 	}
 	function ReplaceImgur (hash, elem, $elem) {
-		ReplaceImage('http://i.imgur.com/'+ hash +'.png', elem, $elem);
-		$.getJSON('http://api.imgur.com/2/image/'+ hash, function (data) {
+		ReplaceImage('//i.imgur.com/'+ hash +'.png', elem, $elem);
+		$.getJSON('//api.imgur.com/2/image/'+ hash, function (data) {
 			$elem.unwrap();
 			ReplaceImage(data.image.links.original, elem, $elem);
 		});
@@ -140,7 +140,7 @@
 		var newel = $('<iframe allowfullscreen>'),
 			id = 'YT_'+ hash +'_'+ (new Date).getTime();
 		newel.prop('height', height);
-		newel.prop('src', 'http://www.youtube.com/embed/'+ hash +'?rel=0&autoplay=1&theme=light&enablejsapi=1&width='+width+'&height='+height);
+		newel.prop('src', '//www.youtube.com/embed/'+ hash +'?rel=0&autoplay=1&theme=light&enablejsapi=1&width='+width+'&height='+height);
 		newel.prop('frameborder', '0');
 		newel.prop('id', id);
 		newel.data('YTSetting', {
@@ -175,11 +175,11 @@
 			$this.replaceWith(newel);
 			if (YouTubeIframeAPIReady) YoutubeRegisterPlayer(id);
 		})
-		$.getJSON('http://gdata.youtube.com/feeds/api/videos/'+ hash +'?v=2&alt=json-in-script&callback=?', function (data) {
+		$.getJSON('//gdata.youtube.com/feeds/api/videos/'+ hash +'?v=2&alt=json-in-script&callback=?', function (data) {
 			var ltitle = $('div.yt-title', lazyloader);
 			ltitle.html(data.entry.title.$t);
 			ltitle.click(function(e) {
-				window.open('http://www.youtube.com/watch?v='+hash, '_blank');
+				window.open('//www.youtube.com/watch?v='+hash, '_blank');
 				e.stopPropagation();
 			});
 		});
@@ -248,7 +248,7 @@
 	function ReplaceVimeo (hash, elem, $elem) {
 		var newel = $('<iframe allowfullscreen>');
 		newel.prop('height', height);
-		newel.prop('src', 'http://player.vimeo.com/video/'+ hash +'?portrait=0&amp;color=ffffff');
+		newel.prop('src', '//player.vimeo.com/video/'+ hash +'?portrait=0&amp;color=ffffff');
 		newel.prop('frameborder', '0');
 		CommonSetting(newel, $elem);
 		$elem.replaceWith(newel);
@@ -257,14 +257,14 @@
 	function ReplacePastebin (hash, elem, $elem) {
 		var newel = $('<iframe>');
 		newel.prop('height', height);
-		newel.prop('src', 'http://pastebin.com/embed_iframe.php?i='+ hash);
+		newel.prop('src', '//pastebin.com/embed_iframe.php?i='+ hash);
 		CommonSetting(newel, $elem);
 		$elem.replaceWith(newel);
 	}
 
 	function ReplaceSoundcloud (url, elem, $elem) {
 		$.getJSON(
-			'http://soundcloud.com/oembed?callback=?',
+			'//soundcloud.com/oembed?callback=?',
 			{
 				format: 'js',
 				url: url,
@@ -280,7 +280,7 @@
 
 	function ReplaceBandcamp (url, elem, $elem) {
 		$.getJSON(
-			'http://api.bandcamp.com/api/url/1/info?key=thrjozkaskhjastaurrtygitylpt&url='+ encodeURIComponent(url) + '&callback=?',
+			'//api.bandcamp.com/api/url/1/info?key=thrjozkaskhjastaurrtygitylpt&url='+ encodeURIComponent(url) + '&callback=?',
 			function (data) {
 				var mid, mclass;
 				if ("track_id" in data) {
@@ -292,7 +292,7 @@
 					mid = '/album='+ data.album_id +'/size=grande3/';
 				}
 				else return;
-				$elem.wrap('<center class="Bandcamp '+ mclass +'" />').replaceWith('<iframe src="http://bandcamp.com/EmbeddedPlayer/v=2'+ mid +'bgcol=FFFFFF/linkcol=151/" allowtransparency="true" >');
+				$elem.wrap('<center class="Bandcamp '+ mclass +'" />').replaceWith('<iframe src="//bandcamp.com/EmbeddedPlayer/v=2'+ mid +'bgcol=FFFFFF/linkcol=151/" allowtransparency="true" >');
 			}
 		).error(function() {
 			ReplaceBandcamp(url, elem, $elem);
