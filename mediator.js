@@ -121,11 +121,11 @@
 	function ReplaceImage (url, elem, $elem) {
 		var newel = $('<img>');
 		newel.prop('src', url);
-		CommonSetting(newel, $elem);
+		CommonSetting(newel, $elem, 'MediatorImage');
 		$elem.replaceWith(newel);
 		newel[0].onload = function() {
-			this.setAttribute('width')
-			if (this.clientWidth > width) this.setAttribute('width', width);
+			this.setAttribute('width');
+			if (this.width > width) this.setAttribute('width', width+'px');
 		};
 	}
 	function ReplaceImgur (hash, elem, $elem) {
