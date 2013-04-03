@@ -114,7 +114,8 @@
 		newel.css('-moz-box-shadow', '0 0 2px #888');
 		newel.css('-webkit-box-shadow', '0 0 2px #888');
 		$elem.addClass('Mediator');
-		$elem.wrap('<center class="'+ type +'" style="width:'+width+'px;"/>');
+		type = type ? ' '+ type : '';
+		$elem.wrap('<center class="Mediator'+ type +'"/>');
 		return;
 	}
 
@@ -160,7 +161,7 @@
 			var $this = $(this);
 			if (!$this.hasClass('YoutubeFocus')) $this.css('max-height', '80px');
 			$this.removeClass('YoutubeHover');
-		});
+		}).css('width', width);
 
 		var lazyloader = $('<div class="lazyload"><div class="yt-title"/><div class="yt-button"/></div>');
 		lazyloader.css('background-image', 'url(//images-focus-opensocial.googleusercontent.com/gadgets/proxy?url=http://i.ytimg.com/vi/'+ hash +'/hqdefault.jpg&container=focus&resize_w=642)');
@@ -250,7 +251,7 @@
 		newel.prop('height', height);
 		newel.prop('src', '//player.vimeo.com/video/'+ hash +'?portrait=0&amp;color=ffffff');
 		newel.prop('frameborder', '0');
-		CommonSetting(newel, $elem);
+		CommonSetting(newel, $elem, 'Vimeo');
 		$elem.replaceWith(newel);
 	}
 
@@ -258,7 +259,7 @@
 		var newel = $('<iframe>');
 		newel.prop('height', height);
 		newel.prop('src', '//pastebin.com/embed_iframe.php?i='+ hash);
-		CommonSetting(newel, $elem);
+		CommonSetting(newel, $elem, 'Pastebin');
 		$elem.replaceWith(newel);
 	}
 
@@ -271,7 +272,9 @@
 				iframe: true
 			},
 			function (data) {
-				$elem.wrap('<center/>').replaceWith(data.html);
+				var newel = $(data.html);
+				CommonSetting(newel, $elem, 'Soundcloud');
+				$elem.replaceWith(newel);
 			}
 		).error(function() {
 			ReplaceSoundcloud(url, elem, $elem);
@@ -292,7 +295,9 @@
 					mid = '/album='+ data.album_id +'/size=grande3/';
 				}
 				else return;
-				$elem.wrap('<center class="Bandcamp '+ mclass +'" />').replaceWith('<iframe src="//bandcamp.com/EmbeddedPlayer/v=2'+ mid +'bgcol=FFFFFF/linkcol=151/" allowtransparency="true" >');
+				var newel = $('<iframe src="//bandcamp.com/EmbeddedPlayer/v=2'+ mid +'bgcol=FFFFFF/linkcol=151/" allowtransparency="true" >');
+				CommonSetting(newel, $elem, 'Bandcamp '+ mclass);
+				$elem.replaceWith(newel);
 			}
 		).error(function() {
 			ReplaceBandcamp(url, elem, $elem);
