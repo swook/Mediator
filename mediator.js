@@ -125,7 +125,7 @@
 		CommonSetting(newel, $elem, 'MediatorImage');
 		$elem.replaceWith(newel);
 		newel[0].onload = function() {
-			this.setAttribute('width');
+			this.removeAttribute('width');
 			if (this.width > width) this.setAttribute('width', width+'px');
 		};
 	}
