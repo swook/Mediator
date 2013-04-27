@@ -28,10 +28,10 @@
 						});
 						return params;
 					}()) : {},
-				file: urlo.pathname.match(/\/([^\/?&]*)[^\/]*$/)[1],
+				file: (urlo.pathname.match(/\/([^\/?&]*)[^\/]*$/) || [,''])[1],
 				hash: urlo.hash.length ? urlo.hash.slice(1) : '',
-				relative: urlo.href.match(/:\/\/[^\/]+(.*)$/)[1],
-				full: urlo.href.match(/([^#]*)/)[1],
+				relative: (urlo.href.match(/:\/\/[^\/]+(.*)$/) || [,''])[1],
+				full: (urlo.href.match(/([^#]*)/) || [,''])[1],
 				full_hash: urlo.href
 			};
 		if (url == urlo.href) urlcache[url] = urlp;
