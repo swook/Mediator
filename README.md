@@ -7,8 +7,8 @@ Mediator is a [plugin](http://vanillaforums.org/addon/browse/plugins) written in
 
 Mediator converts embeddable resource urls to embedded resources. The current media supported are:
 
-- ![](http://www.google.com/s2/u/0/favicons?domain=youtube.com) Youtube
-- ![](http://www.google.com/s2/u/0/favicons?domain=vimeo.com) Vimeo
-- ![](http://www.google.com/s2/u/0/favicons?domain=imgur.com) Imgur
-- ![](http://www.google.com/s2/u/0/favicons?domain=pastebin.com) Pastebin
-- ![](http://www.google.com/s2/u/0/favicons?domain=soundcloud.com) Soundcloud
+- ![](https://plus.google.com/_/favicon?domain=youtube.com) Youtube
+- ![](https://plus.google.com/_/favicon?domain=vimeo.com) Vimeo
+- ![](https://plus.google.com/_/favicon?domain=imgur.com) Imgur
+- ![](https://plus.google.com/_/favicon?domain=pastebin.com) Pastebin
+- ![](https://plus.google.com/_/favicon?domain=soundcloud.com) Soundcloud
