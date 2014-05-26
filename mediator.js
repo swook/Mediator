@@ -74,9 +74,12 @@
 			return ReplaceImage(url, elem, $elem);
 
 		if (urlo.host == 'imgur.com' || urlo.host == 'www.imgur.com') {
-			var match = urlo.path.match(/^\/([\w]{5})$/);
+			var match = urlo.path.match(/\/a\/([\w]{5,7})$/);
+			if (match) return ReplaceImgurGal(match[1], elem, $elem);
+
+			var match = urlo.path.match(/([\w]{5,7})$/);
 			if (match) return ReplaceImgur(match[1], elem, $elem);
-		}
+    }
 
 		if ((urlo.host == 'youtube.com' || urlo.host == 'www.youtube.com') && urlo.file == 'watch' && 'v' in urlo.params)
 			return ReplaceYoutube(urlo.params.v, elem, $elem);
@@ -99,6 +102,7 @@
 			var match = urlo.path.match(/^\/[^\/.]+\//);
 			if (match) return ReplaceSoundcloud(url, elem, $elem);
 		}
+
 		if (urlo.host == 'snd.sc') {
 			return ReplaceSoundcloud(url, elem, $elem);
 		}
@@ -135,6 +139,14 @@
 			$elem.unwrap();
 			ReplaceImage(data.image.links.original, elem, $elem);
 		});
+	}
+
+	function ReplaceImgurGal (hash, elem, $elem) {
+		var newel = $('<iframe>');
+		newel.prop('height',height);
+		newel.prop('src', '//imgur.com/a/'+ hash+ '/embed')
+		CommonSetting(newel, $elem, 'imgurGal');
+		$elem.replaceWith(newel);
 	}
 
 	function ReplaceYoutube (hash, elem, $elem) {
