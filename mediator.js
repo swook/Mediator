@@ -72,13 +72,14 @@
 
 		if (urlo.file.match(/\.(jpg|jpeg|png|gif)/i))
 			return ReplaceImage(url, elem, $elem);
-			
+
 		if (urlo.host == 'imgur.com' || urlo.host == 'www.imgur.com') {
 			var match = urlo.path.match(/\/a\/([\w]{5,7})$/);
-			if(match) { return ReplaceImgurGal(match[1], elem, $elem);}
-			var match = urlo.path.match(/([\w]{5,7})$/);	
-			if(match) {return ReplaceImgur(match[1], elem, $elem); }
-			}
+			if (match) return ReplaceImgurGal(match[1], elem, $elem);
+
+			var match = urlo.path.match(/([\w]{5,7})$/);
+			if (match) return ReplaceImgur(match[1], elem, $elem);
+    }
 
 		if ((urlo.host == 'youtube.com' || urlo.host == 'www.youtube.com') && urlo.file == 'watch' && 'v' in urlo.params)
 			return ReplaceYoutube(urlo.params.v, elem, $elem);
@@ -101,7 +102,7 @@
 			var match = urlo.path.match(/^\/[^\/.]+\//);
 			if (match) return ReplaceSoundcloud(url, elem, $elem);
 		}
-		
+
 		if (urlo.host == 'snd.sc') {
 			return ReplaceSoundcloud(url, elem, $elem);
 		}
@@ -133,7 +134,6 @@
 		};
 	}
 	function ReplaceImgur (hash, elem, $elem) {
-		
 		ReplaceImage('//i.imgur.com/'+ hash +'.png', elem, $elem);
 		$.getJSON('//api.imgur.com/2/image/'+ hash, function (data) {
 			$elem.unwrap();
@@ -148,7 +148,7 @@
 		CommonSetting(newel, $elem, 'imgurGal');
 		$elem.replaceWith(newel);
 	}
-	
+
 	function ReplaceYoutube (hash, elem, $elem) {
 		var newel = $('<iframe allowfullscreen>'),
 			id = 'YT_'+ hash +'_'+ (new Date).getTime();
@@ -292,7 +292,7 @@
 			ReplaceSoundcloud(url, elem, $elem);
 		});
 	}
-	
+
 	function ReplaceBandcamp (url, elem, $elem) {
 		$.getJSON(
 			'//api.bandcamp.com/api/url/1/info?key=thrjozkaskhjastaurrtygitylpt&url='+ encodeURIComponent(url) + '&callback=?',
