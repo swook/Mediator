@@ -79,7 +79,15 @@
 
 			var match = urlo.path.match(/([\w]{5,7})$/);
 			if (match) return ReplaceImgur(match[1], elem, $elem);
-    }
+        }
+		
+		if (urlo.host == 'gyazo.com' || urlo.host == 'www.gyazo.com') {
+			var match = urlo.path.match(/\/a\/([\w]{32})$/);
+			if (match) return ReplaceGyazoGal(match[1], elem, $elem);
+
+			var match = urlo.path.match(/([\w]{32})$/);
+			if (match) return ReplaceGyazo(match[1], elem, $elem);
+        }
 
 		if ((urlo.host == 'youtube.com' || urlo.host == 'www.youtube.com') && urlo.file == 'watch' && 'v' in urlo.params)
 			return ReplaceYoutube(urlo.params.v, elem, $elem);
@@ -140,7 +148,6 @@
 			ReplaceImage(data.image.links.original, elem, $elem);
 		});
 	}
-
 	function ReplaceImgurGal (hash, elem, $elem) {
 		var newel = $('<iframe>');
 		newel.prop('height',height);
@@ -149,6 +156,21 @@
 		$elem.replaceWith(newel);
 	}
 
+	function ReplaceGyazo (hash, elem, $elem) {
+		ReplaceImage('//i.gyazo.com/'+ hash +'.png', elem, $elem);
+		$.getJSON('//api.gyazo.com/api/images/'+ hash, function (data) {
+			$elem.unwrap();
+			ReplaceImage(data.image.links.original, elem, $elem);
+		});
+	}
+	function ReplaceGyazoGal (hash, elem, $elem) {
+		var newel = $('<iframe>');
+		newel.prop('height',height);
+		newel.prop('src', '//i.gyazo.com/'+ hash+ '/embed')
+		CommonSetting(newel, $elem, 'GyazoGal');
+		$elem.replaceWith(newel);
+	}
+	
 	function ReplaceYoutube (hash, elem, $elem) {
 		var newel = $('<iframe allowfullscreen>'),
 			id = 'YT_'+ hash +'_'+ (new Date).getTime();
