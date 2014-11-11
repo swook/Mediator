@@ -10,5 +10,7 @@ Mediator converts embeddable resource urls to embedded resources. The current me
 - ![](https://plus.google.com/_/favicon?domain=youtube.com) Youtube
 - ![](https://plus.google.com/_/favicon?domain=vimeo.com) Vimeo
 - ![](https://plus.google.com/_/favicon?domain=imgur.com) Imgur
+- ![](https://plus.google.com/_/favicon?domain=gyazo.com) Gyazo
 - ![](https://plus.google.com/_/favicon?domain=pastebin.com) Pastebin
 - ![](https://plus.google.com/_/favicon?domain=soundcloud.com) Soundcloud
+
