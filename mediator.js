@@ -96,7 +96,7 @@
 			return ReplaceYoutube(urlo.file, elem, $elem);
 
 		if (urlo.host == 'vimeo.com' || urlo.host == 'www.vimeo.com') {
-			var match = urlo.file.match(/^([\d]{8})$/);
+			var match = urlo.file.match(/^([\d]{8,})$/);
 			if (match) return ReplaceVimeo(match[1], elem, $elem);
 		}
 
