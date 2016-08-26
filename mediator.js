@@ -225,9 +225,9 @@
 			$this.replaceWith(newel);
 			if (YouTubeIframeAPIReady) YoutubeRegisterPlayer(id);
 		})
-		$.getJSON('//gdata.youtube.com/feeds/api/videos/'+ hash +'?v=2&alt=json-in-script&callback=?', function (data) {
+		$.getJSON('https://query.yahooapis.com/v1/public/yql?q=select%20content%20from%20html%20where%20url%3D%22https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D'+ hash +'%22%20and%20xpath%3D%22%2F%2Ftitle%22&format=json&callback=?', function (data) {
 			var ltitle = $('div.yt-title', lazyloader);
-			ltitle.html(data.entry.title.$t);
+			ltitle.html(data.query.results.title);
 			ltitle.click(function(e) {
 				window.open('//www.youtube.com/watch?v='+hash, '_blank');
 				e.stopPropagation();
