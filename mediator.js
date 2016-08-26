@@ -50,7 +50,7 @@
 		}
 
 		$('.Message a').each(Check);
-		$('.MessageList').live('DOMNodeInserted', function(e) {
+		$('.MessageList').on('DOMNodeInserted', function(e) {
 			if ($(e.target).hasClass('Item')) {
 				$('div.Message a', e.target).each(Check);
 			}
@@ -80,7 +80,7 @@
 			var match = urlo.path.match(/([\w]{5,7})$/);
 			if (match) return ReplaceImgur(match[1], elem, $elem);
         }
-		
+
 		if (urlo.host == 'gyazo.com' || urlo.host == 'www.gyazo.com') {
 			var match = urlo.path.match(/\/a\/([\w]{32})$/);
 			if (match) return ReplaceGyazoGal(match[1], elem, $elem);
@@ -170,7 +170,7 @@
 		CommonSetting(newel, $elem, 'GyazoGal');
 		$elem.replaceWith(newel);
 	}
-	
+
 	function ReplaceYoutube (hash, elem, $elem) {
 		var newel = $('<iframe allowfullscreen>'),
 			id = 'YT_'+ hash +'_'+ (new Date).getTime();
